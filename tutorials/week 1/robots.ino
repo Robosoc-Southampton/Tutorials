@@ -64,10 +64,12 @@ void loop() {
 #define IN3 10
 #define IN4 11
 #define TAIL 3
-#define ECHO 7
-#define TRIGGER 12
+#define ECHO 4
+#define TRIGGER 2
 
 Servo tail;
+long lastPingTime = 0;
+int lastDistance = 0;
 
 void setMotorSpeed(int INA, int INB, int ENX, int speed) {
 	if (speed > 0) {
@@ -105,7 +107,20 @@ void setTailAngle(int angle) {
 }
 
 int readDistance() {
-	return 0;
+	if (millis() - lastPingTime < 100)
+		return lastDistance;
+
+	lastPingTime = millis();
+
+	digitalWrite(TRIGGER, LOW);
+	delayMicroseconds(2);
+	digitalWrite(TRIGGER, HIGH);
+	delayMicroseconds(5);
+	digitalWrite(TRIGGER, LOW);
+
+	long duration = pulseIn(ECHO, HIGH);
+
+	return lastDistance = duration / 29 / 2;
 }
 
 void initialiseStuff() {
@@ -130,5 +145,5 @@ void initialiseStuff() {
 	digitalWrite(IN3, LOW);
 	digitalWrite(IN4, LOW);
 
-	tail.write(0);
+	tail.write(90);
 }
