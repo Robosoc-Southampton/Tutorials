@@ -10,6 +10,8 @@
  * for clarity.
  */
 
+#include <Servo.h>
+
 
 /* set the speed of the left motor */
 /* speed between -255 and 255 inclusive */
@@ -88,7 +90,7 @@ void setLeftSpeed(int speed) {
 }
 
 void setRightSpeed(int speed) {
-	setMotorSpeed(IN3, IN4, ENB, speed);
+	setMotorSpeed(IN4, IN3, ENB, speed);
 }
 
 void setSpeeds(int left, int right) {
@@ -103,7 +105,7 @@ void setTailAngle(int angle) {
 }
 
 int readDistance() {
-
+	return 0;
 }
 
 void initialiseStuff() {
