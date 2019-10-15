@@ -1,6 +1,8 @@
 
+#include <Servo.h>
+
 // define the pin to use for the servo
-#define SERVO_PIN 5
+#define SERVO_PIN 3
 
 // declare the servo
 Servo servo;
@@ -19,7 +21,7 @@ void loop() {
 		delay(50);
 	}
 
-	for (int i = 9; i >= 0; ++i) {
+	for (int i = 9; i >= 0; --i) {
 		servo.write(i * 10);
 		delay(50);
 	}
