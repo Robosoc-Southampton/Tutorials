@@ -59,13 +59,13 @@ void loop() {
 
 #define ENA 5
 #define ENB 6
-#define IN1 8
-#define IN2 9
-#define IN3 10
-#define IN4 11
-#define TAIL 3
-#define ECHO 4
-#define TRIGGER 2
+#define IN1 2
+#define IN2 3
+#define IN3 4
+#define IN4 7
+#define TAIL 10
+#define ECHO 8
+#define TRIGGER 9
 
 Servo tail;
 long lastPingTime = 0;
